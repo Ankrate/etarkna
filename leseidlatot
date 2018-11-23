@@ -1,0 +1,7 @@
+def parse_list():
+    html = requests.get("https://totaldiesel.ru/category/view/59" + "?limit=10000&start=1").content
+    soup = BeautifulSoup(html, "lxml")
+    menu = soup.findAll('td', {'class': 'prodlist_ean'})
+    for links in menu:
+        url = links.a['href']
+        print(url)
